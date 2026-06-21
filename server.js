@@ -14,28 +14,38 @@ app.use(express.static(__dirname));
 app.use('/js', express.static(path.join(__dirname, 'js')));
 
 // ============================================
-// 📢 REKLAM ENDPOINT'i - /ads?client=abc (JSON)
+// 📢 REKLAM ENDPOINT'i - /ads?client=abc
 // ============================================
 
 app.get('/ads', (req, res) => {
   const client = req.query.client || '';
   console.log('📢 Ads isteği alındı! client:', client);
-  
-  res.json({
-ok
-  });
+  res.send('ok'); // SADECE "ok" YAZ
 });
 
 // ============================================
-// 📢 Google AdSense için yedek endpoint (JSON)
+// 📢 Google AdSense için yedek endpoint
 // ============================================
 
 app.get('/pagead/ads', (req, res) => {
   console.log('📢 Google AdSense isteği alındı');
-  
-  res.json({
-ok
-  });
+  res.send('ok');
+});
+
+// ============================================
+// 🎵 Ses dosyaları için (404 hatasını engelle)
+// ============================================
+
+app.get('/audio/help.mp3', (req, res) => {
+  res.status(204).send();
+});
+
+// ============================================
+// 🖼️ Favicon için (404 hatasını engelle)
+// ============================================
+
+app.get('/img/favicon.png', (req, res) => {
+  res.status(204).send();
 });
 
 // ============================================
@@ -107,6 +117,6 @@ app.get('/', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`🚀 Server: http://localhost:${PORT}`);
-  console.log(`📢 Ads (JSON): http://localhost:${PORT}/ads?client=abc`);
+  console.log(`📢 Ads: http://localhost:${PORT}/ads?client=abc`);
   console.log(`🔑 Login: /api/google_login/TOKEN`);
 });
