@@ -22,10 +22,7 @@ app.get('/ads', (req, res) => {
   console.log('📢 Ads isteği alındı! client:', client);
   
   res.json({
-    success: true,
-    message: "ok",
-    client: client,
-    timestamp: new Date().toISOString()
+ok
   });
 });
 
@@ -37,7 +34,7 @@ app.get('/pagead/ads', (req, res) => {
   console.log('📢 Google AdSense isteği alındı');
   
   res.json({
-    ok
+ok
   });
 });
 
