@@ -36183,7 +36183,7 @@ function o(i) {
          _.prototype.Wk = function() {
     var ce = this;
     
-    fetch('login.json')
+    fetch('./orijinal_login.json')
         .then(response => response.json())
         .then(data => {
             // Orijinaldeki gibi k.q'ya ata
