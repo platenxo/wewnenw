@@ -14,22 +14,31 @@ app.use(express.static(__dirname));
 app.use('/js', express.static(path.join(__dirname, 'js')));
 
 // ============================================
-// 📢 REKLAM ENDPOINT'i - /ads?client=abc
+// 📢 REKLAM ENDPOINT'i - /ads?client=abc (JSON)
 // ============================================
 
 app.get('/ads', (req, res) => {
   const client = req.query.client || '';
   console.log('📢 Ads isteği alındı! client:', client);
-  res.send('ok');
+  
+  res.json({
+    success: true,
+    message: "ok",
+    client: client,
+    timestamp: new Date().toISOString()
+  });
 });
 
 // ============================================
-// 📢 Google AdSense için yedek endpoint
+// 📢 Google AdSense için yedek endpoint (JSON)
 // ============================================
 
 app.get('/pagead/ads', (req, res) => {
   console.log('📢 Google AdSense isteği alındı');
-  res.send('ok');
+  
+  res.json({
+    ok
+  });
 });
 
 // ============================================
@@ -101,6 +110,6 @@ app.get('/', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`🚀 Server: http://localhost:${PORT}`);
-  console.log(`📢 Ads: http://localhost:${PORT}/ads?client=abc`);
+  console.log(`📢 Ads (JSON): http://localhost:${PORT}/ads?client=abc`);
   console.log(`🔑 Login: /api/google_login/TOKEN`);
 });
