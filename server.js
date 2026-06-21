@@ -14,6 +14,25 @@ app.use(express.static(__dirname));
 app.use('/js', express.static(path.join(__dirname, 'js')));
 
 // ============================================
+// 📢 REKLAM ENDPOINT'i - /ads?client=abc
+// ============================================
+
+app.get('/ads', (req, res) => {
+  const client = req.query.client || '';
+  console.log('📢 Ads isteği alındı! client:', client);
+  res.send('ok');
+});
+
+// ============================================
+// 📢 Google AdSense için yedek endpoint
+// ============================================
+
+app.get('/pagead/ads', (req, res) => {
+  console.log('📢 Google AdSense isteği alındı');
+  res.send('ok');
+});
+
+// ============================================
 // 🔑 LOGIN - OYUNUN BEKLEDİĞİ FORMATTA
 // ============================================
 
@@ -23,18 +42,11 @@ app.get('/api/google_login/:token', (req, res) => {
   console.log('✅ Login isteği geldi!');
   console.log('📝 Token:', token.substring(0, 30) + '...');
   
-  // ============================================
-  // 📋 OYUNUN Zb FONKSİYONUNUN BEKLEDİĞİ FORMAT
-  // ============================================
-  
   res.json({
-    // Zb fonksiyonunun beklediği alanlar
-    "b2b607a0c418112d": "999999",        // k.Fc = user_id
-    "8fadf06b7f": "bypass_user",          // k.uf = username
-    "dbf8b2a53afe": token,                // D["1ak"] = token
-    "bf84a44a33": new Date(Date.now() + 30*24*60*60*1000).toISOString(), // premium bitiş
-    
-    // Ek olarak oyunun kullanabileceği diğer alanlar
+    "b2b607a0c418112d": "999999",
+    "8fadf06b7f": "bypass_user",
+    "dbf8b2a53afe": token,
+    "bf84a44a33": new Date(Date.now() + 30*24*60*60*1000).toISOString(),
     "code": 200,
     "user_id": "999999",
     "username": "BypassUser",
@@ -89,5 +101,6 @@ app.get('/', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`🚀 Server: http://localhost:${PORT}`);
+  console.log(`📢 Ads: http://localhost:${PORT}/ads?client=abc`);
   console.log(`🔑 Login: /api/google_login/TOKEN`);
 });
