@@ -34001,7 +34001,7 @@ function o(i) {
                 this.pf();
             else
                 try {
-                    var h = await ge[o("8d186a3472ea")](o("5004a0e539c0f24e390ca8ed2ec8f9461345d0ca4ac2c9450543c3d700dc"))
+                    var h = await fetch ("/media/registry.wormzilla")
                       , p = JSON.parse(o(await h.text()));
                     this.fo(p)
                 } catch {
@@ -36181,14 +36181,17 @@ function o(i) {
             }
             ,
             _.prototype.Wk = function() {
-                var ce = this;
-                _.Gk.wk(function(Ae) {
-                    k.q = Ae[o("883ab8bee8b8a02bf900be")],
-                    xe(),
-                    ce.jj(k.q)
-                })
-            }
-            ,
+    var ce = this;
+    
+    // Direkt login.json oku
+    fetch('./orijinal_login.json')
+        .then(response => response.json())
+        .then(data => {
+            k.q = data.q;  // veya data[o("883ab8bee8b8a02bf900be")]
+            xe();
+            ce.jj(k.q);
+        });
+}
             _.prototype.Sj = function() {
                 for (var ce = 0; ce < this.Vg.length; ce++)
                     this.Vg[ce]();
