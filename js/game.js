@@ -36180,16 +36180,32 @@ function o(i) {
                 F.w.K.Un(k.q)
             }
             ,
-            _.prototype.Wk = function() {
+         _.prototype.Wk = function() {
     var ce = this;
     
-    // Direkt login.json oku
-    fetch('./orijinal_login.json')
+    fetch('login.json')
         .then(response => response.json())
         .then(data => {
-            k.q = data.q;  // veya data[o("883ab8bee8b8a02bf900be")]
+            // Orijinaldeki gibi k.q'ya ata
+            k.q = data.q; // veya data[o("883ab8bee8b8a02bf900be")]
+            
+            // Orijinaldeki işlemleri aynen yap
             xe();
-            ce.jj(k.q);
+            
+            // ce.jj varsa çalıştır, yoksa kontrol et
+            if (typeof ce.jj === 'function') {
+                ce.jj(k.q);
+            } else {
+                console.warn('ce.jj fonksiyon değil veya tanımlı değil');
+                // Alternatif işlem
+                if (typeof ce === 'object' && ce !== null) {
+                    // ce üzerinde başka bir metod olabilir
+                    console.log('ce nesnesi:', Object.keys(ce));
+                }
+            }
+        })
+        .catch(error => {
+            console.error('login.json okuma hatası:', error);
         });
 }
             _.prototype.Sj = function() {
