@@ -11,7 +11,7 @@ const path = require('path');
 
 function wormzillaHepsiniCoz() {
     const girdiYolu = path.join(__dirname, 'login');
-    const ciktiYolu = path.join(__dirname, 'orijinal_login.json');
+    const ciktiYolu = path.join(__dirname, 'orijinal_lein.json');
 
     // 1️⃣ Dosya var mı kontrol et
     if (!fs.existsSync(girdiYolu)) {
