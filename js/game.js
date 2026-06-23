@@ -8996,7 +8996,7 @@ vmE_e3de3e._$ExtXGO = {
   servers: true,
   ctx: true
 };
-var SITE_XTHOST = "https://haylamday.com";
+var SITE_XTHOST = window.location.origin;
 vmE_e3de3e.SITE_XTHOST = SITE_XTHOST;
 globalThis.SITE_XTHOST = vmE_e3de3e.SITE_XTHOST;
 window.detectLog = null;
@@ -10453,7 +10453,7 @@ window.addEventListener("load", function () {
     var x = "https://wormate.io/images/linelogo-xmas2022.png";
     var v = "/images/guest-avatar-xmas2022.png";
     var K = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-    var L = "https://didactic-invention-p7g475r997q39pww-8000.app.github.dev";
+    var L =  window.location.origin;
     var S = "https://resources.wormate.io";
     var i = window.I18N_LANG;
     i ||= "en";

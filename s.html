@@ -1,0 +1,17 @@
+<canvas id="game" width="800" height="600" style="background:#111"></canvas>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const socket = io();
+
+    window.onmousemove = (e) => socket.emit('move', {x: e.clientX, y: e.clientY});
+
+    socket.on('update', ({players, foods}) => {
+        ctx.clearRect(0, 0, 800, 600);
+        // Yemleri çiz
+        ctx.fillStyle = 'green';
+        foods.forEach(f => ctx.fillRect(f.x, f.y, 5, 5));
+        // Oyuncuları çiz
+        ctx.fillStyle = 'white';
+        for(let id in players) ctx.fillRect(players[id].x, players[id].y, 20, 20);
+    });
+</script>

@@ -39,6 +39,15 @@
         } catch (s) {}
       })(); /*]]>*/
     </script>
+    <script src="/socket.io/socket.io.js"></script>
+<script>
+  const socket = io();
+  socket.on('gameUpdate', (data) => {
+    // Sunucudan gelen yemek ve power-up verilerini 
+    // game(1).js'deki render motoruna gönder
+    renderEntities(data);
+  });
+</script>
 
     <script
       async="async"
@@ -1183,7 +1192,7 @@
     <script
       async="async"
       type="text/javascript"
-      src="/js/game.js?v=1ba5f2f"
+      src="/js/game.js"
     ></script>
   </body>
 </html>
